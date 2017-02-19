@@ -15,7 +15,7 @@ Endpoint Integration :: Rescue Senior web application
 == Run the application locally
 1. Clone the repo
 2. cd to the app dir
-3. Run **npm install** to download all the gems
+3. Run **npm install** to download all the dependencies
 4. Run **ionic serve** and navigate to localhost in your browser
 5. Run **ionic serve -l** to see the app in mobile platform
 6. Run the app locally by adding mobile platform plugins
