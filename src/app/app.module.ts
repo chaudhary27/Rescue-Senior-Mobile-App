@@ -7,6 +7,10 @@ import { ReposPage } from '../pages/repos/repos';
 import { OrganizationsPage } from '../pages/organizations/organizations';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 
+import { LoginPage } from '../pages/login/login';
+import { AuthService } from '../providers/auth-service';
+import { RegisterPage } from '../pages/register/register';
+
 import { GithubUsers } from '../providers/github-users';
 
 @NgModule({
@@ -15,7 +19,9 @@ import { GithubUsers } from '../providers/github-users';
     UsersPage,
     ReposPage,
     OrganizationsPage,
-    UserDetailsPage
+    UserDetailsPage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -26,9 +32,11 @@ import { GithubUsers } from '../providers/github-users';
     UsersPage,
     ReposPage,
     OrganizationsPage,
-    UserDetailsPage
+    UserDetailsPage,
+    LoginPage,
+    RegisterPage
   ],
   // Add github users provider
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, AuthService]
 })
 export class AppModule {}

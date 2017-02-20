@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-
 import { Platform, MenuController, Nav } from 'ionic-angular';
-
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { OrganizationsPage } from '../pages/organizations/organizations';
+import { LoginPage } from '../pages/login/login';
 
 
 @Component({
@@ -16,7 +15,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   
   // make UsersPage the root (or first) page
-  rootPage: any = UsersPage;
+  rootPage: any = LoginPage;
+  
   pages: Array<{title: string, component: any}>;
   
   constructor(
@@ -27,6 +27,7 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
+      { title: 'Login', component: LoginPage },
       { title: 'Users', component: UsersPage },
       { title: 'Repos', component: ReposPage },
       { title: 'Location', component: OrganizationsPage}
