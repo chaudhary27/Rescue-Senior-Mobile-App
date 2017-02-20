@@ -13,6 +13,8 @@ import { RegisterPage } from '../pages/register/register';
 
 import { GithubUsers } from '../providers/github-users';
 
+import { BeaconProvider } from '../providers/beacon-provider';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -37,6 +39,6 @@ import { GithubUsers } from '../providers/github-users';
     RegisterPage
   ],
   // Add github users provider
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, AuthService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, AuthService, BeaconProvider]
 })
 export class AppModule {}
