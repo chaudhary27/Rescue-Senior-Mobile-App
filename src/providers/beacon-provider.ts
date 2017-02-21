@@ -1,22 +1,3 @@
-// import { Injectable } from '@angular/core';
-// // import { Http } from '@angular/http';
-// // import 'rxjs/add/operator/map';
-// import { Platform, Events } from ‘ionic-angular’;
-// import { IBeacon } from ‘ionic-native’;
-// /*
-// Generated class for the BeaconProvider provider.
-//
-// See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-// for more info on providers and Angular 2 DI.
-// */
-// // @Injectable()
-// // export class BeaconProvider {
-// //
-// //   constructor(public http: Http) {
-// //     console.log('Hello BeaconProvider Provider');
-// //   }
-// //
-// // }
 import { Injectable } from '@angular/core';
 import { Platform, Events } from 'ionic-angular';
 import { IBeacon } from 'ionic-native';
@@ -36,7 +17,7 @@ export class BeaconProvider {
       if (this.platform.is('cordova')) {
         
         // Request permission to use location on iOS
-        IBeacon.requestAlwaysAuthorization();
+        // IBeacon.requestAlwaysAuthorization();
         
         // create a new delegate and register it with the native layer
         this.delegate = IBeacon.Delegate();

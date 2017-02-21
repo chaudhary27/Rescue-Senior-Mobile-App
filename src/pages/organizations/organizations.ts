@@ -34,7 +34,7 @@ export class OrganizationsPage {
       
       let mapOptions = {
         center: latLng,
-        zoom: 20,
+        zoom: 18,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       

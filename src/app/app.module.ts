@@ -11,9 +11,14 @@ import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service';
 import { RegisterPage } from '../pages/register/register';
 
+import { FitbitPage } from '../pages/fitbit/fitbit';
+
+
 import { GithubUsers } from '../providers/github-users';
 
 import { BeaconProvider } from '../providers/beacon-provider';
+
+import { FitbitUsers } from '../providers/fitbit';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { BeaconProvider } from '../providers/beacon-provider';
     OrganizationsPage,
     UserDetailsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    FitbitPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,9 +42,10 @@ import { BeaconProvider } from '../providers/beacon-provider';
     OrganizationsPage,
     UserDetailsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    FitbitPage
   ],
   // Add github users provider
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, AuthService, BeaconProvider]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, AuthService, BeaconProvider, FitbitUsers]
 })
 export class AppModule {}

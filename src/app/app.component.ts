@@ -6,6 +6,7 @@ import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { OrganizationsPage } from '../pages/organizations/organizations';
 import { LoginPage } from '../pages/login/login';
+import { FitbitPage } from '../pages/fitbit/fitbit';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class MyApp {
   // make UsersPage the root (or first) page
   rootPage: any = LoginPage;
   
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: string, title: string, component: any}>;
   
   constructor(
     public platform: Platform,
@@ -27,11 +28,13 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
-      { title: 'Login', component: LoginPage },
-      { title: 'Users', component: UsersPage },
-      { title: 'Repos', component: ReposPage },
-      { title: 'Location', component: OrganizationsPage}
+      { icon: '<ion-icon name="aperture"></ion-icon>', title: 'Login', component: LoginPage },
+      { icon: '<ion-icon name="person"></ion-icon>', title: 'Users', component: UsersPage },
+      { icon: '<ion-icon ios="ios-wifi" md="md-wifi"></ion-icon>', title: 'iBeacon', component: ReposPage },
+      { icon: '<ion-icon name="locate"></ion-icon>', title: 'Location', component: OrganizationsPage},
+      { icon: '<ion-icon name="aperture"></ion-icon>', title: 'Fitbit', component: FitbitPage }
     ];
+    
   }
   
   initializeApp() {
