@@ -16,9 +16,13 @@ Endpoint Integration :: Rescue Senior web application
 1. Clone the repo
 2. cd to the app dir
 3. Run **npm install** to download all the dependencies
-4. Run **ionic serve** and navigate to localhost in your browser
-5. Run **ionic serve -l** to see the app in mobile platform
-6. Run the app locally by adding mobile platform plugins
+4. Run **ionic platform add android**
+5. Run **ionic build android**
+6. Run **ionic run android**
+
+==To run the app in the browser on your computer do the following
+1. Run **ionic serve** and navigate to localhost in your browser
+2. Run **ionic serve -l** to see the app in mobile platform
 
 == Our Workflow
 Contributing to RescueSeniors is super simple, and we like it that way.
