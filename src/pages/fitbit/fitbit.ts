@@ -10,21 +10,17 @@ See http://ionicframework.com/docs/v2/components/#navigation for more info on
 Ionic pages and navigation.
 */
 @Component({
-selector: 'page-fitbit',
-templateUrl: 'fitbit.html'
+    selector: 'page-fitbit',
+    templateUrl: 'fitbit.html'
 })
 export class FitbitPage {
 
 fitbits: Fitbit[]
 
 constructor(public navCtrl: NavController, public navParams: NavParams, public fitbitusers: FitbitUsers) {
-fitbitusers.load().subscribe(fitbits => {
-this.fitbits = fitbits;
-})
+    fitbitusers.load().subscribe(fitbits => {
+    this.fitbits = fitbits;
+    })
 }
-
-// ionViewDidLoad() {
-//   this.fitbitData.getFitbitData();
-// }
 
 }

@@ -17,7 +17,7 @@ export class BeaconProvider {
       if (this.platform.is('cordova')) {
         
         // Request permission to use location on iOS
-        // IBeacon.requestAlwaysAuthorization();
+        IBeacon.requestAlwaysAuthorization();
         
         // create a new delegate and register it with the native layer
         this.delegate = IBeacon.Delegate();

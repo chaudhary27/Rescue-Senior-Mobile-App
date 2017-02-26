@@ -41,17 +41,17 @@ export class ReposPage {
     this.events.subscribe('didRangeBeaconsInRegion', (data) => {
       
       // update the UI with the beacon list
-      // this.zone.run(() => {
-      
-      this.beacons = [];
-      
-      let beaconList = data.beacons;
-      beaconList.forEach((beacon) => {
-        let beaconObject = new BeaconModel(beacon);
-        this.beacons.push(beaconObject);
+      this.zone.run(() => {
+        
+        this.beacons = [];
+        
+        let beaconList = data.beacons;
+        beaconList.forEach((beacon) => {
+          let beaconObject = new BeaconModel(beacon);
+          this.beacons.push(beaconObject);
+        });
+        
       });
-      
-      // });
       
     });
   }
