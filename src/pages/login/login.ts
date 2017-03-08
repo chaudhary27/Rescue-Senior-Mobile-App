@@ -1,79 +1,109 @@
-// import { Component } from '@angular/core';
-// import { NavController, NavParams } from 'ionic-angular';
-//
-// /*
-//   Generated class for the Login page.
-//
-//   See http://ionicframework.com/docs/v2/components/#navigation for more info on
-//   Ionic pages and navigation.
-// */
-// @Component({
-//   selector: 'page-login',
-//   templateUrl: 'login.html'
-// })
-// export class LoginPage {
-//
-//   constructor(public navCtrl: NavController, public navParams: NavParams) {}
-//
-//   ionViewDidLoad() {
-//     console.log('ionViewDidLoad LoginPage');
-//   }
-//
-// }
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
-import { AuthService } from '../../providers/auth-service';
-import { RegisterPage } from '../register/register';
-// import { HomePage } from '../home/home';
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { AuthProviders, AuthMethods, AngularFire } from 'angularfire2';
+import { Facebook } from 'ionic-native';
+import firebase from 'firebase';
+import { HomePage } from '../home/home';
+import { UsersPage } from '../users/users';
+
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  loading: Loading;
-  registerCredentials = {email: '', password: ''};
+  email: any;
+  password: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public angfire: AngularFire, public platform: Platform) {}
   
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
-  
-  public createAccount() {
-    this.nav.push(RegisterPage);
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
   }
   
-  public login() {
-    this.showLoading()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {
-        setTimeout(() => {
-          this.loading.dismiss();
-          this.nav.setRoot(RegisterPage)
-        });
-      } else {
-        this.showError("Access Denied");
-      }
+  login() {
+    this.angfire.auth.login({
+      email: this.email,
+      password: this.password
     },
-    error => {
-      this.showError(error);
-    });
+    {
+      provider: AuthProviders.Password,
+      method: AuthMethods.Password
+    }).then((response) => {
+      console.log('Login success' + JSON.stringify(response));
+      let currentuser = {
+        email: response.auth.email,
+        picture: response.auth.photoURL
+      };
+      window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+      this.navCtrl.push(UsersPage);
+    }).catch((error) => {
+      console.log(error);
+    })
   }
   
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loading.present();
+  twitterlogin() {
+    if (this.platform.is('cordova')) {
+      let accessToken = '541257023-LdJpSaWu0VfmyaQDWjGjEq61N2PQmz19rn6KAM6T';
+      let secretKey = 'XEPG5rm7BPD6UqxSFXGfPX3GG8BwntaPUJuNQr3rrof9M';
+      const twitterCreds = firebase.auth.TwitterAuthProvider.credential(accessToken, secretKey);
+      firebase.auth().signInWithCredential(twitterCreds).then((res) => {
+        let currentuser = firebase.auth().currentUser;
+        window.localStorage.setItem('currentuser', JSON.stringify(currentuser.displayName));
+        alert(currentuser.displayName);
+        this.navCtrl.push(UsersPage);
+      }, (err) => {
+        alert('Login not successful' + err);
+      })
+    }
+    else {
+      this.angfire.auth.login({
+        provider: AuthProviders.Twitter,
+        method: AuthMethods.Popup
+      }).then((response) => {
+        console.log('Login success with twitter' + JSON.stringify(response));
+        let currentuser = {
+          email: response.auth.displayName,
+          picture: response.auth.photoURL
+        };
+        window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+        this.navCtrl.push(UsersPage);
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
   }
   
-  showError(text) {
-    setTimeout(() => {
-      this.loading.dismiss();
-    });
-    
-    let alert = this.alertCtrl.create({
-      title: 'Fail',
-      subTitle: text,
-      buttons: ['OK']
-    });
-    alert.present(prompt);
+  fblogin() {
+    if (this.platform.is('cordova')) {
+      Facebook.login(['email', 'public_profile']).then((res) => {
+        const facebookCreds = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+        firebase.auth().signInWithCredential(facebookCreds).then((res) => {
+          let currentuser = firebase.auth().currentUser;
+          window.localStorage.setItem('currentuser', JSON.stringify(currentuser.displayName));
+          alert(currentuser.displayName);
+          this.navCtrl.push(UsersPage);
+        }, (err) => {
+          alert('Login not successful' + err);
+        })
+      })
+    }
+    else {
+      this.angfire.auth.login({
+        provider: AuthProviders.Facebook,
+        method: AuthMethods.Popup
+      }).then((response) => {
+        console.log('Login success with twitter' + JSON.stringify(response));
+        let currentuser = {
+          email: response.auth.displayName,
+          picture: response.auth.photoURL
+        };
+        window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+        this.navCtrl.push(UsersPage);
+      }).catch((error) => {
+        console.log(error);
+      })
+      
+    }
   }
+  
 }

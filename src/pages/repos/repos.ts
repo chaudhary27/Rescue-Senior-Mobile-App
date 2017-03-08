@@ -2,10 +2,8 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, Events } from 'ionic-angular';
 import { NgZone } from "@angular/core";
-
 // plugins
 // import { IBeacon } from 'ionic-native';
-
 // providers
 import { BeaconProvider } from '../../providers/beacon-provider'
 

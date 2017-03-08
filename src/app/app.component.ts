@@ -1,13 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
+import { HomePage } from '../pages/home/home';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { OrganizationsPage } from '../pages/organizations/organizations';
-import { LoginPage } from '../pages/login/login';
 import { FitbitPage } from '../pages/fitbit/fitbit';
-
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +17,7 @@ export class MyApp {
   // make UsersPage the root (or first) page
   rootPage: any = LoginPage;
   
-  pages: Array<{icon: string, title: string, component: any}>;
+  pages: Array<{title: string, component: any}>;
   
   constructor(
     public platform: Platform,
@@ -28,11 +27,12 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
-      { icon: '<ion-icon name="aperture"></ion-icon>', title: 'Login', component: LoginPage },
-      { icon: '<ion-icon name="person"></ion-icon>', title: 'Users', component: UsersPage },
-      { icon: '<ion-icon ios="ios-wifi" md="md-wifi"></ion-icon>', title: 'iBeacon', component: ReposPage },
-      { icon: '<ion-icon name="locate"></ion-icon>', title: 'Location', component: OrganizationsPage},
-      { icon: '<ion-icon name="aperture"></ion-icon>', title: 'Fitbit', component: FitbitPage }
+      { title: 'HomePage', component: HomePage},
+      { title: 'LoginPage', component: LoginPage},
+      {  title: 'Users', component: UsersPage },
+      {  title: 'iBeacon', component: ReposPage },
+      {  title: 'Location', component: OrganizationsPage},
+      {  title: 'Fitbit', component: FitbitPage }
     ];
     
   }
@@ -42,7 +42,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-      Splashscreen.hide();
+      Splashscreen.show();
     });
   }
   
