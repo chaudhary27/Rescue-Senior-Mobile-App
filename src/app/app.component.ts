@@ -13,18 +13,18 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  
+
   // make UsersPage the root (or first) page
-  rootPage: any = LoginPage;
-  
+  rootPage: any = FitbitPage;
+
   pages: Array<{title: string, component: any}>;
-  
+
   constructor(
     public platform: Platform,
     public menu: MenuController
   ) {
     this.initializeApp();
-    
+
     // set our app's pages
     this.pages = [
       { title: 'HomePage', component: HomePage},
@@ -34,9 +34,9 @@ export class MyApp {
       {  title: 'Location', component: OrganizationsPage},
       {  title: 'Fitbit', component: FitbitPage }
     ];
-    
+
   }
-  
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -45,7 +45,7 @@ export class MyApp {
       Splashscreen.show();
     });
   }
-  
+
   openPage(page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
