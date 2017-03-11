@@ -15,7 +15,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make UsersPage the root (or first) page
-  rootPage: any = FitbitPage;
+  rootPage: any = UsersPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -53,3 +53,11 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 }
+
+// kadjsf;lajs;fljas;dlfj
+// a;fja;slfj
+// a;lfj;alsdf
+// as;dlfjk;alsfj
+// as;ldfj;alkjf
+// adfja;lfj
+// aldkfjas
