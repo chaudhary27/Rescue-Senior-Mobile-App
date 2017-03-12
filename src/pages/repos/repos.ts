@@ -2,8 +2,8 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, Events } from 'ionic-angular';
 import { NgZone } from "@angular/core";
-// plugins
-// import { IBeacon } from 'ionic-native';
+import firebase from 'firebase';
+
 // providers
 import { BeaconProvider } from '../../providers/beacon-provider'
 
@@ -19,6 +19,7 @@ export class ReposPage {
   
   beacons: BeaconModel[] = [];
   zone: any;
+  
   
   constructor(public navCtrl: NavController, public platform: Platform, public beaconProvider: BeaconProvider, public events: Events) {
     // required for UI update
@@ -37,20 +38,18 @@ export class ReposPage {
   
   listenToBeaconEvents() {
     this.events.subscribe('didRangeBeaconsInRegion', (data) => {
-      
       // update the UI with the beacon list
       this.zone.run(() => {
-        
         this.beacons = [];
-        
         let beaconList = data.beacons;
         beaconList.forEach((beacon) => {
           let beaconObject = new BeaconModel(beacon);
           this.beacons.push(beaconObject);
+          firebase.database().ref('userBeacon').set({
+            beaconObject: beaconObject
+          });
         });
-        
       });
-      
     });
   }
   

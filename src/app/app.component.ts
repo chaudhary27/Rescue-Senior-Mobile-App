@@ -7,6 +7,7 @@ import { ReposPage } from '../pages/repos/repos';
 import { OrganizationsPage } from '../pages/organizations/organizations';
 import { FitbitPage } from '../pages/fitbit/fitbit';
 import { LoginPage } from '../pages/login/login';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,12 +28,13 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
-      { title: 'HomePage', component: HomePage},
-      { title: 'LoginPage', component: LoginPage},
-      {  title: 'Users', component: UsersPage },
-      {  title: 'iBeacon', component: ReposPage },
-      {  title: 'Location', component: OrganizationsPage},
-      {  title: 'Fitbit', component: FitbitPage }
+      { title: 'Login', component: LoginPage},
+      { title: 'Dashboard', component: DashboardPage },
+      { title: 'Health Portal', component: FitbitPage },
+      { title: 'Outdoor Location', component: OrganizationsPage},
+      { title: 'Indoor Location', component: HomePage},
+      { title: 'iBeacon Nearby', component: ReposPage },
+      { title: 'Rescuers Nearby', component: UsersPage }
     ];
     
   }

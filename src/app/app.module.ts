@@ -10,6 +10,7 @@ import { ReposPage } from '../pages/repos/repos';
 import { OrganizationsPage } from '../pages/organizations/organizations';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { FitbitPage } from '../pages/fitbit/fitbit';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 import { GithubUsers } from '../providers/github-users';
 import { BeaconProvider } from '../providers/beacon-provider';
 import { FitbitUsers } from '../providers/fitbit';
@@ -32,7 +33,8 @@ const config = {
     ReposPage,
     OrganizationsPage,
     UserDetailsPage,
-    FitbitPage
+    FitbitPage,
+    DashboardPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -47,7 +49,8 @@ const config = {
     ReposPage,
     OrganizationsPage,
     UserDetailsPage,
-    FitbitPage
+    FitbitPage,
+    DashboardPage
   ],
   // Add github users provider
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, BeaconProvider, FitbitUsers]
