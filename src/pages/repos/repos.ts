@@ -3,10 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, Platform, Events } from 'ionic-angular';
 import { NgZone } from "@angular/core";
 import firebase from 'firebase';
-
 // providers
 import { BeaconProvider } from '../../providers/beacon-provider'
-
 // models
 import { BeaconModel } from '../../models/beacon-model';
 
@@ -27,6 +25,7 @@ export class ReposPage {
   }
   
   ionViewDidLoad() {
+    
     this.platform.ready().then(() => {
       this.beaconProvider.initialise().then((isInitialised) => {
         if (isInitialised) {
@@ -50,6 +49,22 @@ export class ReposPage {
           });
         });
       });
+    });
+  }
+  
+  fetchLocation() {
+    let data = firebase.database().ref('/userBeacon/beaconObject/beacon');
+    data.on('value', function(snapshot){
+      let locDataVals = [];
+      if (snapshot.val().major == '995' && snapshot.val().minor == '40651'){
+        let indoorLocation = "Nac, Rm 7/106";
+        locDataVals.push(indoorLocation);
+        let accuracy = snapshot.val().accuracy;
+        locDataVals.push(accuracy);
+        let proximity = snapshot.val().proximity;
+        locDataVals.push(proximity);
+      }
+      console.log(locDataVals);
     });
   }
   
