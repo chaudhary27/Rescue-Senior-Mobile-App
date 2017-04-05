@@ -14,6 +14,7 @@ export class FitbitPage {
   
   // fitbits: Fitbit[]
   fitbits: any;
+  times: any;
   heartRates: FirebaseListObservable<any>;
   // timestamp: FirebaseListObservable<any>;
   // public fitbitusers: FitbitUsers
@@ -21,8 +22,14 @@ export class FitbitPage {
   constructor(public navCtrl: NavController, angFire: AngularFire,public navParams: NavParams,public fitbitusers: FitbitUsers) {
     fitbitusers.load().subscribe(fitbits => {
       this.fitbits = fitbits;
-      console.log(this.fitbits);
+      // console.log(this.fitbits);
     });
+    fitbitusers.load1().subscribe(times => {
+      this.times = times;
+      let myDate = new Date(this.times);
+      console.log(myDate);
+    });
+    
     this.heartRates = angFire.database.list('/heart_rate_zones');
     // let data = firebase.database().ref('/time_stamp');
     // data.once('value').then(function(snapshot) {

@@ -1,9 +1,3 @@
-<!--
-Generated template for the Home page.
-
-See http://ionicframework.com/docs/v2/components/#navigation for more info on
-Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button icon-only menuToggle>
@@ -16,6 +10,17 @@ Ionic pages and navigation.
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <strong>Last Synced</strong>
+    </ion-card-header>
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="md-timer" item-left></ion-icon>
+        <ion-badge item-left>{{ times }}</ion-badge>
+      </button>
+    </ion-list>
+  </ion-card>
   <ion-card *ngFor="let beacon of beaconArray  | async">
     <ion-card-header>
       <strong>Room: Nac 7/106</strong>

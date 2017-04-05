@@ -12,10 +12,27 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      
-    </ion-card-header>
     <ion-list no-lines *ngFor="let beacon of beacons">
+      <ion-item>
+        <ion-icon name="md-compass" item-left></ion-icon>
+        Proximity
+        <ion-badge item-right>{{ beacon.beacon.proximity }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-compass" item-left></ion-icon>
+        Tx Power
+        <ion-badge item-right>{{ beacon.beacon.tx }} dBm</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-wifi" item-left></ion-icon>
+        Rssi
+        <ion-badge item-right>{{ beacon.rssi }} dBm</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-bug" item-left></ion-icon>
+        Accuracy
+        <ion-badge item-right>{{ beacon.beacon.accuracy }}</ion-badge>
+      </ion-item>
       <ion-item>
         <ion-icon name="md-cube" item-left></ion-icon>
         Major
@@ -26,19 +43,11 @@
         Minor
         <ion-badge item-right>{{ beacon.minor }}</ion-badge>
       </ion-item>
-      <ion-item>
-        <ion-icon name="md-wifi" item-left></ion-icon>
-        Rssi
-        <ion-badge item-right>{{ beacon.rssi }}</ion-badge>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="md-compass" item-left></ion-icon>
-        Proximity
-        <ion-badge item-right>{{ beacon.beacon.proximity }}</ion-badge>
-      </ion-item>
+      
+      
     </ion-list>
   </ion-card>
-</ion-content> 
+</ion-content>
 
 <!-- <ion-content>
 <ion-list no-lines>
