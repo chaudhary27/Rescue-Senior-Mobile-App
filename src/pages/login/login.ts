@@ -3,7 +3,7 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 import { AuthProviders, AuthMethods, AngularFire } from 'angularfire2';
 import { Facebook } from 'ionic-native';
 import firebase from 'firebase';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { UsersPage } from '../users/users';
 
 

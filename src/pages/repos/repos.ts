@@ -18,18 +18,18 @@ export class ReposPage {
   
   beacons: BeaconModel[] = [];
   zone: any;
-  beaconArray: FirebaseListObservable<any>;
-  heartRates: FirebaseListObservable<any>;
-  time_stamp: any;
+  // beaconArray: FirebaseListObservable<any>;
+  // heartRates: FirebaseListObservable<any>;
+  // time_stamp: any;
   
   constructor(public navCtrl: NavController, angFire: AngularFire, public platform: Platform, public beaconProvider: BeaconProvider, public events: Events) {
     // required for UI update
     this.zone = new NgZone({ enableLongStackTrace: false });
-    this.beaconArray = angFire.database.list('/userBeacon/beaconArray');
-    this.heartRates = angFire.database.list('/heart_rate_zones');
-    this.time_stamp = firebase.database().ref('/heart_rate_zones/time_stamp').on('value', function(snapshot){
-      snapshot.val();
-    });
+    // this.beaconArray = angFire.database.list('/userBeacon/beaconArray');
+    // this.heartRates = angFire.database.list('/heart_rate_zones');
+    // this.time_stamp = firebase.database().ref('/heart_rate_zones/time_stamp').on('value', function(snapshot){
+    //   snapshot.val();
+    // });
   }
   
   ionViewDidLoad() {
@@ -53,7 +53,8 @@ export class ReposPage {
           let beaconObject = new BeaconModel(beacon);
           this.beacons.push(beaconObject);
           firebase.database().ref('userBeacon').set({
-            Beacons: this.beacons
+            Beacons: this.beacons,
+            createdAt: firebase.database.ServerValue.TIMESTAMP
           });
         });
       });

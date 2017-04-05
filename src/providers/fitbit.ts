@@ -14,7 +14,8 @@ export class FitbitUsers {
   }
   
   load(){
-    return this.http.get('assets/heart_rate.json').map(res => <Fitbit[]>res.json());
+    // return this.http.get('assets/heart_rate.json').map(res => <Fitbit[]>res.json());
+    return this.http.get('https://rescuesenior-d31bf.firebaseio.com/time_stamp.json').map(res => <Fitbit[]>res.json());
   }
   
 }

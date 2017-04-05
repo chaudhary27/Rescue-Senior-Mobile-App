@@ -20,7 +20,19 @@
 </button>
 </ion-list>
 </ion-content> -->
+
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <strong>Last Synced</strong>
+    </ion-card-header>
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="md-timer" item-left></ion-icon>
+        <ion-badge item-left>{{ fitbits }}</ion-badge>
+      </button>
+    </ion-list>
+  </ion-card>
   <ion-card *ngFor="let heartrate of heartRates | async">
     <ion-card-header>
       <strong>{{heartrate.name}}</strong>
