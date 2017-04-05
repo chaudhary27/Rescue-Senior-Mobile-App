@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { NavController, Platform, Events } from 'ionic-angular';
 import { NgZone } from "@angular/core";
 import firebase from 'firebase';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 // providers
-import { BeaconProvider } from '../../providers/beacon-provider'
+import { BeaconProvider } from '../../providers/beacon-provider';
 // models
 import { BeaconModel } from '../../models/beacon-model';
 
@@ -17,11 +18,18 @@ export class ReposPage {
   
   beacons: BeaconModel[] = [];
   zone: any;
+  beaconArray: FirebaseListObservable<any>;
+  heartRates: FirebaseListObservable<any>;
+  time_stamp: any;
   
-  
-  constructor(public navCtrl: NavController, public platform: Platform, public beaconProvider: BeaconProvider, public events: Events) {
+  constructor(public navCtrl: NavController, angFire: AngularFire, public platform: Platform, public beaconProvider: BeaconProvider, public events: Events) {
     // required for UI update
     this.zone = new NgZone({ enableLongStackTrace: false });
+    this.beaconArray = angFire.database.list('/userBeacon/beaconArray');
+    this.heartRates = angFire.database.list('/heart_rate_zones');
+    this.time_stamp = firebase.database().ref('/heart_rate_zones/time_stamp').on('value', function(snapshot){
+      snapshot.val();
+    });
   }
   
   ionViewDidLoad() {
@@ -45,27 +53,28 @@ export class ReposPage {
           let beaconObject = new BeaconModel(beacon);
           this.beacons.push(beaconObject);
           firebase.database().ref('userBeacon').set({
-            beaconObject: beaconObject
+            Beacons: this.beacons
           });
         });
       });
     });
   }
   
-  fetchLocation() {
-    let data = firebase.database().ref('/userBeacon/beaconObject/beacon');
-    data.on('value', function(snapshot){
-      let locDataVals = [];
-      if (snapshot.val().major == '995' && snapshot.val().minor == '40651'){
-        let indoorLocation = "Nac, Rm 7/106";
-        locDataVals.push(indoorLocation);
-        let accuracy = snapshot.val().accuracy;
-        locDataVals.push(accuracy);
-        let proximity = snapshot.val().proximity;
-        locDataVals.push(proximity);
-      }
-      console.log(locDataVals);
-    });
-  }
+  
+  // fetchLocation() {
+  //   let data = firebase.database().ref('/userBeacon/beaconArray/0/beacon');
+  //   data.on('value', function(snapshot){
+  //     let locDataVals = [];
+  //     // if (snapshot.val().major == '995' && snapshot.val().minor == '40651'){
+  //     let indoorLocation = "Nac, Rm 7/106";
+  //     locDataVals.push(indoorLocation);
+  //     let accuracy = snapshot.val().accuracy;
+  //     locDataVals.push(accuracy);
+  //     let proximity = snapshot.val().proximity;
+  //     locDataVals.push(proximity);
+  //     // }
+  //     console.log(locDataVals);
+  //   });
+  // }
   
 }

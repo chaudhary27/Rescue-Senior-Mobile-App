@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Fitbit } from '../../models/fitbit';
-import {  FitbitUsers } from '../../providers/fitbit';
+// import { Fitbit } from '../../models/fitbit';
+// import {  FitbitUsers } from '../../providers/fitbit';
+// import firebase from 'firebase';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
-/*
-Generated class for the Fitbit page.
 
-See http://ionicframework.com/docs/v2/components/#navigation for more info on
-Ionic pages and navigation.
-*/
 @Component({
-    selector: 'page-fitbit',
-    templateUrl: 'fitbit.html'
+  selector: 'page-fitbit',
+  templateUrl: 'fitbit.html'
 })
 export class FitbitPage {
-
-fitbits: Fitbit[]
-
-constructor(public navCtrl: NavController, public navParams: NavParams, public fitbitusers: FitbitUsers) {
-    fitbitusers.load().subscribe(fitbits => {
-    this.fitbits = fitbits;
-    })
-}
-
+  
+  // fitbits: Fitbit[]
+  heartRates: FirebaseListObservable<any>;
+  // public fitbitusers: FitbitUsers
+  // public navParams: NavParams
+  constructor(public navCtrl: NavController, angFire: AngularFire) {
+    // fitbitusers.load().subscribe(fitbits => {
+    //   this.fitbits = fitbits;
+    // });
+    this.heartRates = angFire.database.list('/heart_rate_zones');
+  }
+  
 }

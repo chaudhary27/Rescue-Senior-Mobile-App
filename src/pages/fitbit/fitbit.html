@@ -1,47 +1,54 @@
-<!--
-Generated template for the Fitbit page.
 
-See http://ionicframework.com/docs/v2/components/#navigation for more info on
-Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Fitbit Heart Rate
+      Fitbit Data
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<!-- <ion-content padding>
-<h3>Fitbit view page</h3>
-</ion-content> -->
-
-<ion-content padding>
-  <ion-list>
-    <button ion-item *ngFor="let fitbit of fitbits">
-      <h2><ion-icon ios="ios-pulse" md="md-pulse"> Heart Rate</ion-icon></h2>
-      <ion-badge item-right>{{fitbit.value}}</ion-badge>
-      <ion-badge item-right>{{fitbit.time}}</ion-badge>
-      <!-- <ion-icon name="arrow-forward" item-right></ion-icon> -->
-    </button>
-  </ion-list>
-</ion-content>
 
 <!-- <ion-content padding>
-<h3>Fitbit View</h3>
 <ion-list>
 <button ion-item *ngFor="let fitbit of fitbits">
-<ion-item>
-<ion-label>Time</ion-label>
-<ion-badge item-right>{{fitbits.time}}</ion-badge>
-</ion-item>
-<ion-item>
-<ion-label>Heart Rate</ion-label>
-<ion-badge item-right>{{fitbits.value}}</ion-badge>
-</ion-item>
+<h2><ion-icon ios="ios-pulse" md="md-pulse"> Heart Rate</ion-icon></h2>
+<ion-badge item-right>{{fitbit.value}}</ion-badge>
+<ion-badge item-right>{{fitbit.time}}</ion-badge>
 </button>
 </ion-list>
 </ion-content> -->
+<ion-content>
+  <ion-card *ngFor="let heartrate of heartRates | async">
+    <ion-card-header>
+      <strong>{{heartrate.name}}</strong>
+    </ion-card-header>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-icon name="md-pulse" item-left></ion-icon>
+        BPM Range
+        <ion-badge item-right>{{ heartrate.max }} - {{ heartrate.min}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-clock" item-left></ion-icon>
+        Time in Range
+        <ion-badge item-right>{{ heartrate.minutes }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-happy" item-left></ion-icon>
+        Calories Out
+        <ion-badge item-right>{{ heartrate.calories_out}}</ion-badge>
+      </ion-item>
+      <!-- <ion-item >
+      <p>Calories: {{heartrate.calories_out}}</p>
+      <p>Max: {{heartrate.max}}</p>
+      <p>Min: {{heartrate.min}}</p>
+      <p>Mins in zone: {{ heartrate.minutes }}</p>
+      <p>Zone name: {{heartrate.name}}</p>
+    </ion-item> -->
+  </ion-list>
+</ion-card>
+
+</ion-content>

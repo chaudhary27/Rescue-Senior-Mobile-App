@@ -16,7 +16,7 @@ Endpoint Integration :: Rescue Senior web application
 1. Clone the repo
 2. cd to the app dir
 3. Run **npm install** to download all the dependencies
-4. Run **ionic platform add android**
+4. Run **ionic state restore**
 5. Run **ionic build android**
 6. Run **ionic run android**
 
