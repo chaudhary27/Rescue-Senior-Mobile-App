@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
+import { SMS } from '@ionic-native/sms';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +16,9 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { GithubUsers } from '../providers/github-users';
 import { BeaconProvider } from '../providers/beacon-provider';
 import { FitbitUsers } from '../providers/fitbit';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+
 
 // Initialize Firebase
 const config = {
@@ -52,7 +57,16 @@ const config = {
     FitbitPage,
     DashboardPage
   ],
-  // Add github users provider
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GithubUsers, BeaconProvider, FitbitUsers]
+  
+  providers: [
+    GithubUsers,
+    BeaconProvider,
+    FitbitUsers,
+    SMS,
+    TextToSpeech,
+    InAppBrowser,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    
+  ]
 })
 export class AppModule {}

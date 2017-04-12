@@ -24,12 +24,6 @@ export class FitbitPage {
       this.fitbits = fitbits;
       // console.log(this.fitbits);
     });
-    fitbitusers.load1().subscribe(times => {
-      this.times = times;
-      let myDate = new Date(this.times);
-      console.log(myDate);
-    });
-    
     this.heartRates = angFire.database.list('/heart_rate_zones');
     // let data = firebase.database().ref('/time_stamp');
     // data.once('value').then(function(snapshot) {

@@ -11,8 +11,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-list no-lines *ngFor="let beacon of beacons">
+  <ion-card *ngFor="let beacon of beacons">
+    <ion-list no-lines >
       <ion-item>
         <ion-icon name="md-compass" item-left></ion-icon>
         Proximity

@@ -10,14 +10,6 @@
 </ion-header>
 
 
-<!-- <form>
-<ion-input type="text" name="email" [(ngModel)]="email" placeholder="email"></ion-input>
-<ion-input type="password" name="password" [(ngModel)]="password" placeholder="password"></ion-input>
-<button ion-button round block (click)="login()">Login</button>
-<button ion-button round block (click)="twitterlogin()">Login with Twitter</button>
-<button ion-button round block (click)="fblogin()">Login with Facebook</button>
-</form> -->
-
 <ion-content class="login-content" padding>
   <ion-row class="logo-row">
     <ion-col></ion-col>
@@ -30,43 +22,32 @@
     <form #registerForm="ngForm">
       <ion-row>
         <ion-col>
-          <!-- <ion-list inset>
-          <ion-item>
-          <ion-input type="text" name="email" [(ngModel)]="email" placeholder="Email"></ion-input>
-        </ion-item>
-        <ion-item>
-        <ion-input type="password" name="password" [(ngModel)]="password" placeholder="Password"></ion-input>
-      </ion-item>
-      
-    </ion-list> -->
-    <ion-list inset>
-      <ion-item>
-        <ion-label stacked>Email</ion-label>
-        <ion-input name="email" [(ngModel)]="email" type="text"></ion-input>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label stacked>Password</ion-label>
-        <ion-input name="password" [(ngModel)]="password" type="password"></ion-input>
-      </ion-item>
-      
-    </ion-list>
-    
-  </ion-col>
-</ion-row>
-<ion-row>
-  <ion-col class="signup-col">
-    <button ion-button class="submit-btn" round block (click)="login()">Login</button>
-    <button ion-button icon-left class="submit-btn" round block (click)="fblogin()">
-      <ion-icon name="logo-facebook"></ion-icon>Login with Facebook
-    </button>
-    <button ion-button icon-left class="submit-btn" round block (click)="twitterlogin()">
-      <ion-icon name="logo-twitter"></ion-icon>Login with Twitter
-    </button>
-    <!-- <button ion-button class="submit-btn" round block (click)="twitterlogin()">Login with Twitter</button> -->
-  </ion-col>
-</ion-row>
-</form>
-</div>
-
+          <ion-list inset>
+            <ion-item>
+              <ion-label stacked>Email</ion-label>
+              <ion-input name="email" [(ngModel)]="email" type="text"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label stacked>Password</ion-label>
+              <ion-input name="password" [(ngModel)]="password" type="password"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" round block (click)="login()">Login</button>
+          <button ion-button icon-left class="submit-btn" round block (click)="fblogin()">
+            <ion-icon name="logo-facebook"></ion-icon>Login with Facebook
+          </button>
+          <button ion-button icon-left class="submit-btn" round block (click)="twitterlogin()">
+            <ion-icon name="logo-twitter"></ion-icon>Login with Twitter
+          </button>
+          <!-- <button ion-button class="submit-btn" round block (click)="twitterlogin()">Login with Twitter</button> -->
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+  
 </ion-content>

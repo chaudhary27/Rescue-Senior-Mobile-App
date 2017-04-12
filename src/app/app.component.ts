@@ -9,6 +9,7 @@ import { FitbitPage } from '../pages/fitbit/fitbit';
 import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,7 +19,7 @@ export class MyApp {
   // make UsersPage the root (or first) page
   rootPage: any = LoginPage;
   
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: any, title: string, component: any}>;
   
   constructor(
     public platform: Platform,
@@ -28,13 +29,13 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
-      { title: 'Login', component: LoginPage},
-      { title: 'Dashboard', component: DashboardPage },
-      { title: 'Health Portal', component: FitbitPage },
-      { title: 'Outdoor Location', component: OrganizationsPage},
-      { title: 'Indoor Location', component: HomePage},
-      { title: 'iBeacon Nearby', component: ReposPage },
-      { title: 'Rescuers Nearby', component: UsersPage }
+      { icon: 'md-contact', title: 'Login', component: LoginPage},
+      { icon: 'ios-desktop',title: 'Dashboard', component: DashboardPage },
+      { icon: 'md-medkit',title: 'Health Portal', component: FitbitPage },
+      { icon: 'md-pin',title: 'Outdoor Location', component: OrganizationsPage},
+      { icon: 'md-compass',title: 'Indoor Location', component: HomePage},
+      { icon: 'md-bluetooth',title: 'iBeacon Nearby', component: ReposPage },
+      { icon: 'md-people',title: 'Rescuers Nearby', component: UsersPage }
     ];
     
   }
@@ -45,6 +46,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.show();
+      
     });
   }
   
