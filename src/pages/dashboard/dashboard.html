@@ -11,24 +11,63 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-card (click)="sayText()">
+<ion-content class="background" padding>
+  <ion-card>
     <ion-card-header>
-      <strong>Emergency Portal</strong>
+      <strong>User Dashboard</strong>
     </ion-card-header>
-    <button ion-button icon-left color="danger" round (click)="sendSMS()">
-      <ion-icon name="md-medkit"></ion-icon>
-      Emergency HELP
-    </button>
     
+    <ion-list no-lines>
+      
+      <ion-item>
+        <ion-icon name="ios-watch" item-left></ion-icon>
+        Device
+        <ion-badge item-right>{{ devices }}</ion-badge>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="ios-battery-charging" item-left></ion-icon>
+        Battery
+        <ion-badge item-right>{{ batteries }}</ion-badge>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="md-body" item-left></ion-icon>
+        Daily Step Count
+        <ion-badge item-right>{{ steps }}</ion-badge>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="md-heart" item-left></ion-icon>
+        Resting
+        <ion-badge item-right>{{ restings }} BPM</ion-badge>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="md-egg" item-left></ion-icon>
+        Inactive
+        <ion-badge item-right>{{ inactives }} mins</ion-badge>
+      </ion-item>
+      
+    </ion-list>
   </ion-card>
   
   <ion-card>
     <ion-card-header>
-      <strong>Realtime Dashboard</strong>
+      <strong>Emergency Portal</strong>
     </ion-card-header>
-    <button ion-button (click)="open('http://rescueseniors.herokuapp.com/users/1')">MobileWeb Dashboard</button>
+    <ion-item (click)="sayText()">
+      <button ion-button icon-left color="danger" (click)="sendSMS()">
+        <ion-icon name="md-medkit"></ion-icon>
+        Emergency HELP
+      </button>
+    </ion-item>
+    
+    <ion-item>
+      <button ion-button (click)="open('http://rescueseniors.herokuapp.com/users/1')">MobileWeb Dashboard</button>
+    </ion-item>
   </ion-card>
+  
   
   <!-- <ion-card>
   <img src="http://i.imgur.com/ne6WBtb.png"/>

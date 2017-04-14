@@ -5,6 +5,7 @@ import { Facebook } from 'ionic-native';
 import firebase from 'firebase';
 // import { HomePage } from '../home/home';
 import { UsersPage } from '../users/users';
+import { DashboardPage } from '../dashboard/dashboard';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class LoginPage {
         picture: response.auth.photoURL
       };
       window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
-      this.navCtrl.push(UsersPage);
+      this.navCtrl.push(DashboardPage);
     }).catch((error) => {
       console.log(error);
     })
@@ -50,7 +51,7 @@ export class LoginPage {
         let currentuser = firebase.auth().currentUser;
         window.localStorage.setItem('currentuser', JSON.stringify(currentuser.displayName));
         alert(currentuser.displayName);
-        this.navCtrl.push(UsersPage);
+        this.navCtrl.push(DashboardPage);
       }, (err) => {
         alert('Login not successful' + err);
       })
@@ -66,7 +67,7 @@ export class LoginPage {
           picture: response.auth.photoURL
         };
         window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
-        this.navCtrl.push(UsersPage);
+        this.navCtrl.push(DashboardPage);
       }).catch((error) => {
         console.log(error);
       })
@@ -81,7 +82,7 @@ export class LoginPage {
           let currentuser = firebase.auth().currentUser;
           window.localStorage.setItem('currentuser', JSON.stringify(currentuser.displayName));
           alert(currentuser.displayName);
-          this.navCtrl.push(UsersPage);
+          this.navCtrl.push(DashboardPage);
         }, (err) => {
           alert('Login not successful' + err);
         })
@@ -98,7 +99,7 @@ export class LoginPage {
           picture: response.auth.photoURL
         };
         window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
-        this.navCtrl.push(UsersPage);
+        this.navCtrl.push(DashboardPage);
       }).catch((error) => {
         console.log(error);
       })

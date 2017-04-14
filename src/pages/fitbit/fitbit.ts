@@ -14,7 +14,7 @@ export class FitbitPage {
   
   // fitbits: Fitbit[]
   fitbits: any;
-  times: any;
+  // times: any;
   heartRates: FirebaseListObservable<any>;
   // timestamp: FirebaseListObservable<any>;
   // public fitbitusers: FitbitUsers
@@ -25,6 +25,7 @@ export class FitbitPage {
       // console.log(this.fitbits);
     });
     this.heartRates = angFire.database.list('/heart_rate_zones');
+    
     // let data = firebase.database().ref('/time_stamp');
     // data.once('value').then(function(snapshot) {
     //   this.timestamp = snapshot.val();

@@ -16,7 +16,7 @@ import {  FitbitUsers } from '../../providers/fitbit';
 export class HomePage {
   
   beaconArray: FirebaseListObservable<any>;
-  fitbits: any;
+  // fitbits: any;
   times: any;
   // public navParams: NavParams,public fitbitusers: FitbitUsers
   constructor(public navCtrl: NavController, angFire: AngularFire,public navParams: NavParams,public fitbitusers: FitbitUsers) {

@@ -36,6 +36,7 @@
   <ion-card *ngFor="let heartrate of heartRates | async">
     <ion-card-header>
       <strong>{{heartrate.name}}</strong>
+      <p>{{time_stamp}}</p>
     </ion-card-header>
     <ion-list no-lines>
       <ion-item>
