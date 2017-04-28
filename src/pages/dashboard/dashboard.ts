@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
+
+import { Platform } from 'ionic-angular';
+
+import { Shake } from '@ionic-native/shake';
+
 import { NavController, NavParams } from 'ionic-angular';
 
 import { SMS } from '@ionic-native/sms';
+
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import { AlertController } from 'ionic-angular';
@@ -23,7 +29,7 @@ export class DashboardPage {
   steps: any;
   restings: any;
   
-  text: string = 'A message has been sent to a nearby rescuer. If you are in need of immediate medical attention please call 911. Thank you.';
+  text: string = 'Finding a rescuer near you. A message has been sent to a nearby rescuer. If you are in need of immediate medical attention please call 911. Thank you.';
   // texte = {
   //   "number": "",
   //   "message": "",
@@ -31,7 +37,16 @@ export class DashboardPage {
   
   constructor(public fitbitusers: FitbitUsers, private iab: InAppBrowser,
     private tts: TextToSpeech, public navCtrl: NavController,
+    private platform: Platform, private shake: Shake,
     public navParams: NavParams, private SMS: SMS,public alertCtrl: AlertController) {
+      
+      if (this.platform.is('cordova')) {
+        this.platform.ready().then(() => {
+          this.shake.startWatch().subscribe(data => {
+            alert('shake!');
+          })
+        });
+      }
       fitbitusers.load2().subscribe(device => {
         this.devices = device;
         // console.log(this.devices);
@@ -65,7 +80,7 @@ export class DashboardPage {
           intent: ''
         }
       }
-      this.SMS.send('3472338292', 'A patient is need of help near you. Please follow the instructions to rescue. Attached link. http://rescueseniors.herokuapp.com/users/1', options)
+      this.SMS.send('3472338292', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
       .then(()=>{
         let alert = this.alertCtrl.create({
           title: 'Message Sent.',

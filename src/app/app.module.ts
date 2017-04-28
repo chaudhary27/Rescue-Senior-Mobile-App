@@ -17,6 +17,7 @@ import { GithubUsers } from '../providers/github-users';
 import { BeaconProvider } from '../providers/beacon-provider';
 import { FitbitUsers } from '../providers/fitbit';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Shake } from '@ionic-native/shake'
 
 
 
@@ -65,6 +66,7 @@ const config = {
     SMS,
     TextToSpeech,
     InAppBrowser,
+    Shake,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
     
   ]
