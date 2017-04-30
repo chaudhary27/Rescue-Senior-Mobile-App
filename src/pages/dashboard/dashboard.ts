@@ -28,6 +28,7 @@ export class DashboardPage {
   batteries: any;
   steps: any;
   restings: any;
+  times: any;
   
   text: string = 'Finding a rescuer near you. A message has been sent to a nearby rescuer. If you are in need of immediate medical attention please call 911. Thank you.';
   // texte = {
@@ -47,6 +48,10 @@ export class DashboardPage {
           })
         });
       }
+      fitbitusers.load().subscribe(time => {
+        this.times = time;
+        // console.log(this.devices);
+      });
       fitbitusers.load2().subscribe(device => {
         this.devices = device;
         // console.log(this.devices);
@@ -70,7 +75,7 @@ export class DashboardPage {
     }
     
     ionViewDidLoad() {
-      console.log('ionViewDidLoad DashboardPage');
+      // console.log('ionViewDidLoad DashboardPage');
     }
     
     sendSMS(){
@@ -80,7 +85,7 @@ export class DashboardPage {
           intent: ''
         }
       }
-      this.SMS.send('3472338292', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
+      this.SMS.send('9293932994', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
       .then(()=>{
         let alert = this.alertCtrl.create({
           title: 'Message Sent.',
