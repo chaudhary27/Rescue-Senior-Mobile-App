@@ -15,13 +15,10 @@ export class BeaconProvider {
     let promise = new Promise((resolve, reject) => {
       // we need to be running on a device
       if (this.platform.is('cordova')) {
-        
         // Request permission to use location on iOS
         IBeacon.requestAlwaysAuthorization();
-        
         // create a new delegate and register it with the native layer
         this.delegate = IBeacon.Delegate();
-        
         // Subscribe to some of the delegate's event handlers
         this.delegate.didRangeBeaconsInRegion()
         .subscribe(
@@ -30,10 +27,8 @@ export class BeaconProvider {
           },
           error => console.error()
         );
-        
         // setup a beacon region
         this.region = IBeacon.BeaconRegion('deskBeacon', 'B9407F30-F5F8-466E-AFF9-25556B57FE6D');
-        
         // start ranging
         IBeacon.startRangingBeaconsInRegion(this.region)
         .then(
@@ -45,14 +40,11 @@ export class BeaconProvider {
             resolve(false);
           }
         );
-        
-        
       } else {
         console.error("This application needs to be running on a device");
         resolve(false);
       }
     });
-    
     return promise;
   }
   

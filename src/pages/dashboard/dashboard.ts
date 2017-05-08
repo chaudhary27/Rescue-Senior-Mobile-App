@@ -85,7 +85,7 @@ export class DashboardPage {
           intent: ''
         }
       }
-      this.SMS.send('9293932994', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
+      this.SMS.send('9292314982', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
       .then(()=>{
         let alert = this.alertCtrl.create({
           title: 'Message Sent.',

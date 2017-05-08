@@ -22,12 +22,12 @@ export class HomePage {
   constructor(public navCtrl: NavController, angFire: AngularFire,public navParams: NavParams,public fitbitusers: FitbitUsers) {
     // window.localStorage.removeItem('currentuser');
     this.beaconArray = angFire.database.list('/userBeacon/Beacons');
-    fitbitusers.load1().subscribe(times => {
-      this.times = times;
-      let myDate = new Date(this.times*1000);
-      this.times = myDate;
-      // console.log(myDate);
-      console.log(this.times);
+    fitbitusers.load().subscribe(time => {
+      this.times = time;
+      // let myDate = new Date(this.times*1000);
+      // this.times = myDate;
+      // // console.log(myDate);
+      // console.log(this.times);
     });
     
     if (!this.isLoggedin()) {
