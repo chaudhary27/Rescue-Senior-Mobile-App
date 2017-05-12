@@ -16,6 +16,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import {  FitbitUsers } from '../../providers/fitbit';
 
+import { VideoPlayer, VideoOptions } from '@ionic-native/video-player';
+
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+
 
 @Component({
   selector: 'page-dashboard',
@@ -23,6 +27,8 @@ import {  FitbitUsers } from '../../providers/fitbit';
 })
 export class DashboardPage {
   
+  videoOptions: VideoOptions;
+  videoUrl: string;
   devices: any;
   inactives: any;
   batteries: any;
@@ -38,7 +44,8 @@ export class DashboardPage {
   
   constructor(public fitbitusers: FitbitUsers, private iab: InAppBrowser,
     private tts: TextToSpeech, public navCtrl: NavController,
-    private platform: Platform, private shake: Shake,
+    private platform: Platform, private shake: Shake, private videoPlayer: VideoPlayer,
+    private youtube: YoutubeVideoPlayer,
     public navParams: NavParams, private SMS: SMS,public alertCtrl: AlertController) {
       
       if (this.platform.is('cordova')) {
@@ -72,6 +79,29 @@ export class DashboardPage {
         this.restings = resting;
         // console.log(this.devices);
       });
+    }
+    
+    // stopVideo(){
+    //   this.videoPlayer.close()
+    //   console.log("The video was stopped!")
+    // }
+    // async playVideo() {
+    //   try {
+    //     this.videoOptions = {
+    //       volume: 0.7
+    //     }
+    //     this.videoUrl = 'file://../assets/img/video.mp4'
+    //     // setTimeout(() => {
+    //     //   this.stopVideo();
+    //     // }, 3000);
+    //     this.videoPlayer.play(this.videoUrl, this.videoOptions);
+    //   }
+    //   catch(e){
+    //     console.error(e);
+    //   }
+    // }
+    playyouVideo(){
+      this.youtube.openVideo('SJVc9ZQ4wdY');
     }
     
     ionViewDidLoad() {

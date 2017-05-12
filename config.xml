@@ -92,5 +92,7 @@
     <variable name="APP_NAME" value="RescueSeniorApp"/>
   </plugin>
   <plugin name="cordova-plugin-shake" spec="~0.5.4"/>
+  <plugin name="com.moust.cordova.videoplayer" spec="https://github.com/moust/cordova-plugin-videoplayer"/>
+  <plugin name="com.bunkerpalace.cordova.YoutubeVideoPlayer" spec="https://github.com/JonSmart/CordovaYoutubeVideoPlayer"/>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>

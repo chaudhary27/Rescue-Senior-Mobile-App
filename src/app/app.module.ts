@@ -1,8 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+// import { IonicNativePlugin } from '@ionic-native/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { SMS } from '@ionic-native/sms';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { VideoPlayer } from '@ionic-native/video-player';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -65,6 +68,8 @@ const config = {
     FitbitUsers,
     SMS,
     TextToSpeech,
+    VideoPlayer,
+    YoutubeVideoPlayer,
     InAppBrowser,
     Shake,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
