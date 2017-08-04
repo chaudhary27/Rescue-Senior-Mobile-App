@@ -16,7 +16,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import {  FitbitUsers } from '../../providers/fitbit';
 
-import { VideoPlayer, VideoOptions } from '@ionic-native/video-player';
+// import { VideoPlayer, VideoOptions } from '@ionic-native/video-player';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -27,7 +27,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 })
 export class DashboardPage {
   
-  videoOptions: VideoOptions;
+  // videoOptions: VideoOptions;
   videoUrl: string;
   devices: any;
   inactives: any;
@@ -44,7 +44,7 @@ export class DashboardPage {
   
   constructor(public fitbitusers: FitbitUsers, private iab: InAppBrowser,
     private tts: TextToSpeech, public navCtrl: NavController,
-    private platform: Platform, private shake: Shake, private videoPlayer: VideoPlayer,
+    private platform: Platform, private shake: Shake,
     private youtube: YoutubeVideoPlayer,
     public navParams: NavParams, private SMS: SMS,public alertCtrl: AlertController) {
       
@@ -81,25 +81,7 @@ export class DashboardPage {
       });
     }
     
-    // stopVideo(){
-    //   this.videoPlayer.close()
-    //   console.log("The video was stopped!")
-    // }
-    // async playVideo() {
-    //   try {
-    //     this.videoOptions = {
-    //       volume: 0.7
-    //     }
-    //     this.videoUrl = 'file://../assets/img/video.mp4'
-    //     // setTimeout(() => {
-    //     //   this.stopVideo();
-    //     // }, 3000);
-    //     this.videoPlayer.play(this.videoUrl, this.videoOptions);
-    //   }
-    //   catch(e){
-    //     console.error(e);
-    //   }
-    // }
+    
     playyouVideo(){
       this.youtube.openVideo('SJVc9ZQ4wdY');
     }
@@ -115,7 +97,7 @@ export class DashboardPage {
           intent: ''
         }
       }
-      this.SMS.send('9292314982', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
+      this.SMS.send('3472885046', 'A patient is in need of help near you. Please follow the instructions to rescue. Click on the link to access patient location and health data http://rescueseniors.herokuapp.com/users/1', options)
       .then(()=>{
         let alert = this.alertCtrl.create({
           title: 'Message Sent.',

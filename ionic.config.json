@@ -1,6 +1,5 @@
 {
   "name": "ResSeniorIonic",
   "app_id": "358e4560",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }
