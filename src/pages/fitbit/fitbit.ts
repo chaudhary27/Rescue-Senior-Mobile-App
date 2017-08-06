@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Fitbit } from '../../models/fitbit';
+// import { Fitbit } from '../../models/fitbit';
 import {  FitbitUsers } from '../../providers/fitbit';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 
@@ -11,7 +11,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
   templateUrl: 'fitbit.html'
 })
 export class FitbitPage {
-  
+
   // fitbits: Fitbit[]
   fitbits: any;
   // times: any;
@@ -25,14 +25,14 @@ export class FitbitPage {
       // console.log(this.fitbits);
     });
     this.heartRates = angFire.database.list('/heart_rate_zones');
-    
+
     // let data = firebase.database().ref('/time_stamp');
     // data.once('value').then(function(snapshot) {
     //   this.timestamp = snapshot.val();
     //   console.log(this.timestamp);
     // });
   }
-  
+
   // fetchData(){
   //   let data = firebase.database().ref('/time_stamp');
   //   data.once('value').then(function(snapshot) {
@@ -40,5 +40,5 @@ export class FitbitPage {
   //     console.log(time);
   //   });
   // }
-  
+
 }
