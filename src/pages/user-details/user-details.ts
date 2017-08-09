@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 import { User } from '../../models/users';
 import { GithubUsers } from '../../providers/github-users';
 
@@ -11,7 +11,7 @@ import { GithubUsers } from '../../providers/github-users';
 export class UserDetailsPage {
   user: User;
   login: string;
-
+  
   constructor(public navCtrl: NavController, private navParams: NavParams, private githubUsers: GithubUsers) {
     this.login = navParams.get('login');
     githubUsers.loadDetails(this.login).subscribe(user => {
@@ -19,5 +19,5 @@ export class UserDetailsPage {
       console.log(user)
     })
   }
-
+  
 }
