@@ -21,7 +21,7 @@
         "@angular/platform-server": "2.2.1",
         "@ionic-native/browser-tab": "^3.4.4",
         "@ionic-native/core": "^3.7.0",
-        "@ionic-native/in-app-browser": "^3.4.4",
+        "@ionic-native/in-app-browser": "^3.14.0",
         "@ionic-native/shake": "^3.5.0",
         "@ionic-native/sms": "^3.4.4",
         "@ionic-native/text-to-speech": "^3.14.0",
@@ -37,6 +37,7 @@
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-device-motion": "^1.2.5",
         "cordova-plugin-facebook4": "^1.9.1",
+        "cordova-plugin-inappbrowser": "^1.7.1",
         "cordova-plugin-shake": "^0.5.4",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.3",
@@ -94,7 +95,8 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "cordova-plugin-tts": {},
-            "cordova-sms-plugin": {}
+            "cordova-sms-plugin": {},
+            "cordova-plugin-inappbrowser": {}
         },
         "platforms": [
             "android"

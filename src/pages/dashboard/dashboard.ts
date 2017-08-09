@@ -37,10 +37,6 @@ export class DashboardPage {
   times: any;
   
   text: string = 'Finding a rescuer near you. A message has been sent to a nearby rescuer. If you are in need of immediate medical attention please call 911. Thank you.';
-  // texte = {
-  //   "number": "",
-  //   "message": "",
-  // };
   
   constructor(public fitbitusers: FitbitUsers, private iab: InAppBrowser,
     private tts: TextToSpeech, public navCtrl: NavController,
@@ -86,6 +82,7 @@ export class DashboardPage {
       this.youtube.openVideo('SJVc9ZQ4wdY');
     }
     
+    // Use this function to see if your view is loading
     ionViewDidLoad() {
       // console.log('ionViewDidLoad DashboardPage');
     }
